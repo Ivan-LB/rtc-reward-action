@@ -1,0 +1,43 @@
+name: 'RTC Reward on Merge'
+description: 'Automatically award RTC tokens to contributors when their PR is merged'
+author: 'Ivan-LB'
+
+branding:
+  icon: 'award'
+  color: 'orange'
+
+inputs:
+  node-url:
+    description: 'RustChain node URL (e.g. https://50.28.86.131)'
+    required: true
+    default: 'https://50.28.86.131'
+  amount:
+    description: 'RTC amount to award per merged PR'
+    required: false
+    default: '5'
+  wallet-from:
+    description: 'Wallet name to send from (must exist on the node)'
+    required: true
+  admin-key:
+    description: 'Admin private key for signing the reward transaction'
+    required: true
+  dry-run:
+    description: 'Set to "true" to simulate without sending real RTC'
+    required: false
+    default: 'false'
+  wallet-field:
+    description: 'PR body field to extract recipient wallet (e.g. "RTC Wallet:")'
+    required: false
+    default: 'RTC Wallet:'
+
+outputs:
+  tx-id:
+    description: 'Transaction ID of the reward payment (empty in dry-run)'
+  recipient:
+    description: 'Wallet address that received the reward'
+  amount-sent:
+    description: 'Actual RTC amount sent'
+
+runs:
+  using: 'node20'
+  main: 'dist/index.js'

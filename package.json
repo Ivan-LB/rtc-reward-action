@@ -1,0 +1,10 @@
+{
+  "name": "rtc-reward-action",
+  "version": "1.0.0",
+  "description": "Automatically award RTC tokens to contributors when their PR is merged",
+  "main": "src/index.js",
+  "scripts": {
+    "build": "ncc build src/index.js -o dist --minify"
+  },
+  "license": "MIT"
+}
